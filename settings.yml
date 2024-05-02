@@ -1,0 +1,106 @@
+folders:
+    env: 'minerva'
+    root: os.environ["DIR_DATA_HOME"]
+    screenshots: 'sourcedata/master_screenshots_attn'
+    ses: 'ses-1'
+window:
+    size: [1920, 1080] #[1440, 900] #
+    pos: [0, 0]
+    color: [0, 0, 0]
+    fullscr: True
+    winType: pyglet
+    waitBlanking: True
+    screen: 1
+
+operating system: linux
+
+monitor:
+    name: default
+    width: 69.8 # in cm, mac:28.65 #
+    distance: 196  # in cm, mac:53.854 #
+    gamma: 2.06
+    
+mri:
+    nvol: 260
+    TR: 1.5
+    runs: 8
+    screen_size: 29.3
+    screen_distance: 210
+
+task:
+    prf: 'attn'
+    conditions: ['attn-S_hemi-L', 'attn-S_hemi-R', 'attn-L_hemi-L', 'attn-L_hemi-R','pooled_hemi-R','pooled_hemi-L']
+
+data_proc:
+    hp_filter: False
+    hp_thr: 0.01
+    # cut: None # need to fix 
+
+prf-fit:
+    dm_fixation: False
+    n_pix: 120
+    r2-threshold: 0.05
+    grid_nr: 20
+    max_ecc: 5
+    grayval: 127
+    save_grditfits: True
+
+prf-derivs:
+    r2-threshold: 0.01
+    ecc-lb: 0
+    ecc-ub: 10
+
+glm-fit:
+    on-off_TRs: [14,-21]
+    fit_tsk-on: True
+    tskon_type: [1]
+    tskon_label: ''
+    fit_tsk-off: True
+    design-matrix:
+        intercept_id: 0
+        prf_id: 1
+        onoff_id: 2
+        tskon_id: 3
+        tskoff_id: 4
+
+viz:
+    conds: ['attn-L','attn-S','pooled']
+    ordered_rois: ['v1custom','v2custom','v3custom','v4custom','v3abcustom','LOcustom','TOcustom','VOcustom','lowerIPScustom','upperIPScustom']
+    glm-id: 2
+    ecc_range: [-]
+cmap:
+    large: '#32b9a9'
+    small: '#e77e55'
+    sub-001: [0.283072, 0.130895, 0.449241]
+    sub-004: [0.262138, 0.242286, 0.520837]
+    sub-006: [0.220057, 0.343307, 0.549413]
+    sub-007: [0.177423, 0.437527, 0.557565]
+    sub-009: [0.143343, 0.522773, 0.556295]
+    sub-011: [0.119512, 0.607464, 0.540218]
+    sub-012: [0.166383, 0.690856, 0.496502]
+    sub-013: [0.319809, 0.770914, 0.411152]
+    sub-014: [0.525776, 0.833491, 0.288127]
+    sub-015: [0.762373, 0.876424, 0.137064]
+    v1: [0.0, 0.0, 0.3607843137254902]
+    v2: [0.0, 0.0, 0.7215686274509804]
+    v3: [0.06433823529411753, 0.0, 1.0]
+    hv4: [0.3584558823529411, 0.0, 1.0]
+    v3ab: [0.6403186274509804, 0.06980392156862747, 0.9301960784313726]
+    LO: [0.9221813725490193, 0.2501960784313725, 0.7498039215686276]
+    VO: [1.0, 0.4305882352941176, 0.5694117647058825]
+    TO: [1.0, 0.6188235294117647, 0.38117647058823545]
+    IPS: [1.0, 0.7992156862745098, 0.20078431372549033]
+    UpperIPS: [1.0, 0.7992156862745098, 0.20078431372549033] #[1.0, 0.9796078431372549, 0.020392156862745203]
+
+markers:
+    sub-001: 'o'
+    sub-002: 'v'
+    sub-004: '^'
+    sub-006: '>'
+    sub-007: '<'
+    sub-009: 's' 
+    sub-011: '*'
+    sub-012: 'p'
+    sub-013: '8'
+    sub-014: 'P'
+    sub-015: 'd'
